@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h1>Welcolme to the school information page </h1>
+
+
+<h2>Name: {{ school_detail.name }}</h2>
+<h2>Location: {{ school_detail.location }}</h2>
+<h2>Principal: {{ school_detail.principal }}</h2>
+
+<h1>Student information</h1>
+
+{% for items in school_detail.students.all %} <!--all students that are link to the requested specific school will show in this loop
+-->
+<h3>Name: {{ items.name }}</h3>
+    <h3>Age: {{ items.age }}</h3>
+    <p>-----------------</p>
+
+
+{% endfor %}
+<button type="submit" ><a href="{% url 'update' pk=school_detail.pk %}">update</a></button>
+<button type="submit"><a href="{% url 'delete' pk=school_detail.pk %}">Delete</a></button>
+<a href="{% url 'list' %}">go to list</a>
+</body>
+</html>
